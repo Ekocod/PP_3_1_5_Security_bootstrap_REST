@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Create new User</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">SPRING-BOOT + SECURITY 3.1.3</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+    </ul>
+  </div>
+  <div>
+    <form th:action="@{/logout}" method="POST">
+      <input type="submit" value="LOGOUT"/>
+    </form>
+  </div>
+</nav>
+<br>
+<div class = "container">
+  <br>
+  <div class = "row">
+    <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h3 class = "text-center"> Create new User </h3>
+      <div class = "card-body">
+        <form th:action="@{/submit}" th:object = "${user}" th:method="POST">
+          <div class ="form-group">
+            <label> User name </label>
+            <input
+                    type = "text"
+                    name = "name"
+                    th:field = "*{name}"
+                    class = "form-control"
+                    placeholder="Enter name for new User"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> User lastname </label>
+            <input
+                    type = "text"
+                    name = "lastname"
+                    th:field = "*{lastName}"
+                    class = "form-control"
+                    placeholder="Enter lastname for new User"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> User age </label>
+            <input
+                    type = "text"
+                    name = "age"
+                    th:field = "*{age}"
+                    class = "form-control"
+                    placeholder="Enter age for new User"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> User username </label>
+            <input
+                    type = "text"
+                    name = "username"
+                    th:field = "*{username}"
+                    class = "form-control"
+                    placeholder="Enter username for new User"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> User password </label>
+            <input
+                    type = "text"
+                    name = "password"
+                    th:field = "*{password}"
+                    class = "form-control"
+                    placeholder="Enter password for new User"
+            />
+          </div>
+
+          <label>Roles
+            <input type="checkbox" name="roles"
+                   th:each="role : ${roles}"
+                   th:text="${role.getName()}"
+                   th:value="${role.getId()}"
+                   th:field="*{roles}"
+            />
+          </label>
+          <br>
+          <div class = "box-footer">
+            <button type="submit" class = "btn btn-primary">
+              CREATE!
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
