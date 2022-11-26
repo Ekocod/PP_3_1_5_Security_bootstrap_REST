@@ -18,12 +18,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    //  Этот метод для того что бы проект сразу открывал страницу аутентификаций
-    @GetMapping(value = "/")
-    public String redirectToAuthenticationPage() {
-        return "redirect:/login";
-    }
-
     @GetMapping(value = "/user")
     public String getUserPage(Model model, Principal principal) {
         int id = userService.getByUsername(principal.getName()).getId();
