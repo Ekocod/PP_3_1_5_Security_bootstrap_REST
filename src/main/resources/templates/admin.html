@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="padding-top: 10px; padding-bottom: 10px">
-                    <div class="collapse navbar-collapse" id="user">
+                    <div class="collapse navbar-collapse">
                         <ul class="navbar-nav mr-auto">
                             <p style="margin: 0; display: inline; font-size: large; font-weight: bold; color: #f6f6f6"
                                th:utext="${user.username}"></p>
@@ -50,7 +50,7 @@
                     <h2>Admin Panel</h2>
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" id="allUsersTable" href="#allUsers">Users table</a>
+                            <a class="nav-link active" data-toggle="tab" href="#allUsers">Users table</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " data-toggle="tab" href="#newUser">New User</a>
@@ -74,7 +74,7 @@
                                             <th>Delete</th>
                                         </tr>
                                         </thead>
-                                        <tbody id="tbodyAllUserTable">
+                                        <tbody>
                                         <tr th:each ="user : ${users}">
                                             <td th:utext="${user.id}">...</td>
                                             <td th:utext="${user.name}">...</td>
@@ -146,7 +146,7 @@
                                                                             <p></p>
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button" id="editFormCloseButton" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                             <button type="submit" class="btn btn-primary">Edit</button>
                                                                         </div>
                                                                     </div>
@@ -215,7 +215,6 @@
                                                                             <div>
                                                                                 <select multiple
                                                                                         class="form-control form-control-sm"
-                                                                                        id="roles4"
                                                                                         name="roles3"
                                                                                         size="2" required
                                                                                         disabled>
@@ -230,7 +229,7 @@
                                                                             <p></p>
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button" id="deleteFormCloseButton" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                             <button type="submit" class="btn btn-danger">Delete</button>
                                                                         </div>
                                                                     </div>
@@ -253,7 +252,7 @@
                                         <h5 class="card-header">Add new user</h5>
                                         <div class="card-body text-center">
                                             <div class="form-justify-content-center mx-auto col-3">
-                                                <form id="formNewUser" name="formNewUser" th:method="POST" th:action="@{/new-user}" th:object="${newUser}">
+                                                <form name="formNewUser" th:method="POST" th:action="@{/new-user}" th:object="${newUser}">
                                                     <input type="hidden" th:field="*{id}"/>
                                                     <p></p>
                                                     <strong>Name</strong>
