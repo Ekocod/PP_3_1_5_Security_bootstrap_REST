@@ -42,30 +42,15 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void updateUser(User user, int id) {
-        Optional<User> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            User updatedUser = optionalUser.get();
-            updatedUser.setId(id);
-            updatedUser.setName(user.getName());
-            updatedUser.setLastName(user.getLastName());
-            updatedUser.setAge(user.getAge());
-            updatedUser.setUsername(user.getUsername());
-            updatedUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-            updatedUser.setRoles(user.getRoles());
-            userRepository.save(updatedUser);
-        }
+    public void updateUser(int id, User user) {
+        user.setId(id);
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        userRepository.save(user);
     }
 
     @Override
     public User getUserById(int id) {
         return userRepository.getById(id);
-//        Optional<User> optionalUser = userRepository.findById(id);
-//        if (optionalUser.isPresent()) {
-//           return optionalUser.get();
-//        } else {
-//            throw new UsernameNotFoundException(String.format("User with %s not found", id));
-//        }
     }
 
     @Override

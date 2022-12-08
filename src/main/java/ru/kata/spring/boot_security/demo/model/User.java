@@ -94,10 +94,10 @@ public class User implements UserDetails {
         StringBuilder roleName = new StringBuilder();
         for (Role role : getRoles()) {
             roleName.append(role.getName())
-                    .append(", ");
+                    .append(" ");
         }
         return roleName.toString()
-                .replaceAll(", $", "");
+                .replaceAll("ROLE_", "");
     }
 
     public void setRoles(Set<Role> roles) {
