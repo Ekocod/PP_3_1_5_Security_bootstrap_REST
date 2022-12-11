@@ -27,7 +27,7 @@ public class DataInit {
 
         User admin = new User();
         Set<Role> adminRoles = new HashSet<>();
-        Collections.addAll(adminRoles, adminRole, userRole);
+        Collections.addAll(adminRoles, adminRole);
         admin.setId(1);
         admin.setUsername("admin");
         admin.setPassword("admin");
